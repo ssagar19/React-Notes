@@ -1,0 +1,62 @@
+JSX Conditionals: If Statements That Do Work
+How can you write a conditional, if you can’t inject an if statement into JSX?
+
+Well, one option is to write an if statement, and not inject it into JSX.
+
+Look at if.js. Follow the if statement, all the way from line 6 down to line 18.
+
+if.js works, because the words if and else are not injected in between JSX tags. The if statement is on the outside, and no JavaScript injection is necessary.
+
+This is a common way to express conditionals in JSX.
+
+Instructions
+1.
+Select app.js.
+
+Starting on line 16, write an if/else statement, using if.js as a guide.
+
+If (coinToss() === 'heads'), then execute img = <img src={pics.kitty} />.
+
+Inside of the else clause, execute img = <img src={pics.doggy} />.
+
+In other words, if the coin lands heads then you should get a picture of a kitty, and if the coin lands tails then you should get a picture of a doggy.
+
+Checkpoint 2 Passed
+
+Stuck? Get a hint
+2.
+At the bottom of the file, call ReactDOM.render().
+
+For ReactDOM.render()‘s first argument, pass in img.
+
+For ReactDOM.render()‘s second argument, pass in document.getElementById('app').
+
+Click Run. Refresh the browser several times. Does the picture change?
+
+solution..........................
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+function coinToss() {
+  // This function will randomly return either 'heads' or 'tails'.
+  return Math.random() < 0.5 ? 'heads' : 'tails';
+}
+
+const pics = {
+  kitty: 'https://content.codecademy.com/courses/React/react_photo-kitty.jpg',
+  doggy: 'https://content.codecademy.com/courses/React/react_photo-puppy.jpeg'
+};
+let img;
+
+// if/else statement begins here:
+if (coinToss() === 'heads') {
+  img = (
+    <img src={pics.kitty} />
+  );
+} else {
+  img = ( 
+    <img src={pics.doggy} />
+  );
+}
+
+ReactDOM.render(img, document.getElementById('app'));
